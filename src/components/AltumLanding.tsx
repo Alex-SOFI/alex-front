@@ -113,6 +113,11 @@ const AltumLanding: React.FC = () => {
             <div className="flex-1">
               <div className="rounded-2xl border border-neutral-800 bg-black p-4">
 
+                {/* DISCLAIMER */}
+                <div className="text-[11px] text-neutral-500 uppercase tracking-wide mb-2">
+                  Illustrative model · Not live data
+                </div>
+
                 <div className="mb-4 flex items-center justify-between text-xs text-neutral-300">
                   <span>Nerva Global Vault</span>
                   <span className="rounded-full border border-neutral-700 px-2 py-0.5 text-[10px] uppercase tracking-wide text-neutral-300">
@@ -125,7 +130,7 @@ const AltumLanding: React.FC = () => {
                   {/* METRICS */}
                   <div className="space-y-3 rounded-xl border border-neutral-800 bg-black p-4">
                     <div className="text-xs uppercase tracking-wide text-neutral-400">
-                      Vault metrics
+                      Vault metrics (example)
                     </div>
 
                     <div>
@@ -144,41 +149,45 @@ const AltumLanding: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* ALLOCATION */}
+                  {/* ALLOCATION MODEL (EXAMPLE) */}
                   <div className="space-y-3 rounded-xl border border-neutral-800 bg-black p-4">
                     <div className="text-xs uppercase tracking-wide text-neutral-400">
-                      Allocation snapshot
+                      Allocation model (example)
                     </div>
 
                     <div className="space-y-2 text-xs text-neutral-300">
                       <div className="flex items-center justify-between">
-                        <span>Hub chain · Global Vault</span><span>40%</span>
+                        <span>Hub chain · Global Vault</span>
+                        <span>40%</span>
                       </div>
                       <div className="h-1.5 w-full rounded-full bg-neutral-900">
                         <div className="h-1.5 w-[40%] rounded-full bg-white" />
                       </div>
 
                       <div className="flex items-center justify-between pt-2">
-                        <span>Investment Zone A</span><span>30%</span>
+                        <span>Investment Zone A</span>
+                        <span>30%</span>
                       </div>
                       <div className="h-1.5 w-full rounded-full bg-neutral-900">
                         <div className="h-1.5 w-[30%] rounded-full bg-white" />
                       </div>
 
                       <div className="flex items-center justify-between pt-2">
-                        <span>Investment Zone B</span><span>30%</span>
+                        <span>Investment Zone B</span>
+                        <span>30%</span>
                       </div>
                       <div className="h-1.5 w-full rounded-full bg-neutral-900">
                         <div className="h-1.5 w-[30%] rounded-full bg-white" />
                       </div>
                     </div>
 
-                    <div className="pt-2 text-[11px] text-neutral-400">
-                      Single entry point · cross-chain allocation governed by the Curator engine.
-                    </div>
+                    <p className="pt-2 text-[11px] text-neutral-500">
+                      These values are sample configuration ranges used for demonstration. Actual allocations
+                      will be determined by the Nerva Curator engine at launch.
+                    </p>
                   </div>
-                </div>
 
+                </div>
               </div>
             </div>
 
