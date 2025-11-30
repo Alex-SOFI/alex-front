@@ -470,7 +470,7 @@ const AltumLanding: React.FC = () => {
               </p>
 
               <form
-                action="https://formspree.io/f/mwkzjzje"
+                action="https://formspree.io/f/xpwvzeop"
                 method="POST"
                 className="flex flex-col sm:flex-row gap-3 justify-center"
               >
