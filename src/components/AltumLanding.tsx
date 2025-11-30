@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AltumLanding: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(false);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xpwvzeop", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setEmail("");
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
 
@@ -469,30 +501,53 @@ const AltumLanding: React.FC = () => {
                 vault release. No spam — only key product updates.
               </p>
 
-              <form
-                action="https://formspree.io/f/xpwvzeop"
-                method="POST"
-                className="flex flex-col sm:flex-row gap-3 justify-center"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="your@email.com"
-                  className="w-full sm:w-72 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[#1A73E8]"
-                />
-
-                <button
-                  type="submit"
-                  className="rounded-full bg-[#1A73E8] px-6 py-2 text-sm font-semibold text-black hover:bg-[#185fcc]"
+              {!submitted ? (
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col sm:flex-row gap-3 justify-center"
                 >
-                  Join Early Access
-                </button>
-              </form>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="your@email.com"
+                    disabled={submitting}
+                    className="w-full sm:w-72 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[#1A73E8] disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
 
-              <p className="text-neutral-500 text-xs mt-4">
-                Your email is safe. One-click unsubscribe anytime.
-              </p>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="rounded-full bg-[#1A73E8] px-6 py-2 text-sm font-semibold text-black hover:bg-[#185fcc] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {submitting ? "Submitting..." : "Join Early Access"}
+                  </button>
+                </form>
+              ) : (
+                <div className="rounded-2xl border border-[#1A73E8] bg-neutral-900 p-6">
+                  <div className="text-[#1A73E8] text-2xl mb-2">✓</div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    Thank you for joining!
+                  </h3>
+                  <p className="text-sm text-neutral-300">
+                    We've received your email. You'll be notified when Nerva launches.
+                  </p>
+                </div>
+              )}
+
+              {error && (
+                <p className="text-red-400 text-sm mt-4">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+
+              {!submitted && (
+                <p className="text-neutral-500 text-xs mt-4">
+                  Your email is safe. One-click unsubscribe anytime.
+                </p>
+              )}
             </div>
 
           </div>
