@@ -559,7 +559,23 @@ const AltumLanding: React.FC = () => {
       <footer className="border-t border-neutral-800 bg-black">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 text-xs text-neutral-500 sm:flex-row">
           <span>© {new Date().getFullYear()} Nerva. All rights reserved.</span>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://x.com/NervaYield" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-neutral-300 transition-colors"
+            >
+              X
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/nervalink" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-neutral-300 transition-colors"
+            >
+              LinkedIn
+            </a>
             <button className="hover:text-neutral-300">Docs</button>
             <button className="hover:text-neutral-300">Security</button>
             <button className="hover:text-neutral-300">Contact</button>
